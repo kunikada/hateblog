@@ -1,0 +1,14 @@
+6,18,30,42,54 * * * * root /usr/bin/php /var/www/hateblog/shells/reader_v2.php
+3,15,27,39,51 * * * * root /usr/bin/php /var/www/hateblog/shells/keyphrase.php
+0,12,24,36,48 * * * * root /usr/bin/php /var/www/hateblog/shells/counter_v2.php
+#28,58 * * * * root /usr/bin/php /var/www/hateblog/shells/get_screenshot.php
+
+#7 * * * * root /bin/sh /var/www/hateblog/shells/killzombie.sh
+7 * * * * root find /var/www/hateblog/www/application/logs -type f -mtime +7 -delete
+50 23 * * * root /usr/bin/php /var/www/hateblog/shells/reportweet.php
+10 0 * * * root /usr/bin/php /var/www/hateblog/shells/refollow.php
+
+0 4 * * * root /usr/bin/php /var/www/hateblog/shells/update_filter.php
+31 4 * * * root /usr/bin/php /var/www/hateblog/shells/update_counts.php
+1 5 * * * root sh /var/www/hateblog/shells/backup.sh
+
