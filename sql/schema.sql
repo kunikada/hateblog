@@ -16,21 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `hateblog`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `hateblog` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `hateblog`;
-
---
 -- Table structure for table `amazon_bookmarks`
 --
 
-DROP TABLE IF EXISTS `amazon_bookmarks`;
+/* DROP TABLE IF EXISTS `amazon_bookmarks` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `amazon_bookmarks` (
+CREATE TABLE IF NOT EXISTS `amazon_bookmarks` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `sslp` tinyint(4) NOT NULL DEFAULT '0',
@@ -44,10 +36,10 @@ CREATE TABLE `amazon_bookmarks` (
 -- Table structure for table `amazon_tweets`
 --
 
-DROP TABLE IF EXISTS `amazon_tweets`;
+/* DROP TABLE IF EXISTS `amazon_tweets` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `amazon_tweets` (
+CREATE TABLE IF NOT EXISTS `amazon_tweets` (
   `amazon_bookmark_id` int(11) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`amazon_bookmark_id`,`user_id`),
@@ -59,10 +51,10 @@ CREATE TABLE `amazon_tweets` (
 -- Table structure for table `bookmark_access_logs`
 --
 
-DROP TABLE IF EXISTS `bookmark_access_logs`;
+/* DROP TABLE IF EXISTS `bookmark_access_logs` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bookmark_access_logs` (
+CREATE TABLE IF NOT EXISTS `bookmark_access_logs` (
   `user_id` int(10) unsigned NOT NULL,
   `bookmark_id` int(10) unsigned NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -75,10 +67,10 @@ CREATE TABLE `bookmark_access_logs` (
 -- Table structure for table `bookmark_counts`
 --
 
-DROP TABLE IF EXISTS `bookmark_counts`;
+/* DROP TABLE IF EXISTS `bookmark_counts` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bookmark_counts` (
+CREATE TABLE IF NOT EXISTS `bookmark_counts` (
   `cdate` date NOT NULL,
   `offset` smallint(6) NOT NULL DEFAULT '0',
   `cnt` smallint(6) NOT NULL DEFAULT '0',
@@ -90,10 +82,10 @@ CREATE TABLE `bookmark_counts` (
 -- Table structure for table `bookmarks`
 --
 
-DROP TABLE IF EXISTS `bookmarks`;
+/* DROP TABLE IF EXISTS `bookmarks` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bookmarks` (
+CREATE TABLE IF NOT EXISTS `bookmarks` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` tinytext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -117,10 +109,10 @@ CREATE TABLE `bookmarks` (
 -- Table structure for table `exclude_keywords`
 --
 
-DROP TABLE IF EXISTS `exclude_keywords`;
+/* DROP TABLE IF EXISTS `exclude_keywords` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `exclude_keywords` (
+CREATE TABLE IF NOT EXISTS `exclude_keywords` (
   `keyword_id` int(10) unsigned NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`keyword_id`)
@@ -131,10 +123,10 @@ CREATE TABLE `exclude_keywords` (
 -- Table structure for table `keyphrases`
 --
 
-DROP TABLE IF EXISTS `keyphrases`;
+/* DROP TABLE IF EXISTS `keyphrases` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `keyphrases` (
+CREATE TABLE IF NOT EXISTS `keyphrases` (
   `bookmark_id` int(10) unsigned NOT NULL,
   `keyword_id` int(10) unsigned NOT NULL,
   `score` tinyint(4) DEFAULT NULL,
@@ -147,10 +139,10 @@ CREATE TABLE `keyphrases` (
 -- Table structure for table `keyword_id_filtered`
 --
 
-DROP TABLE IF EXISTS `keyword_id_filtered`;
+/* DROP TABLE IF EXISTS `keyword_id_filtered` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `keyword_id_filtered` (
+CREATE TABLE IF NOT EXISTS `keyword_id_filtered` (
   `id` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
@@ -160,10 +152,10 @@ CREATE TABLE `keyword_id_filtered` (
 -- Table structure for table `keywords`
 --
 
-DROP TABLE IF EXISTS `keywords`;
+/* DROP TABLE IF EXISTS `keywords` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `keywords` (
+CREATE TABLE IF NOT EXISTS `keywords` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `keyword` varchar(255) DEFAULT NULL,
   `bookmark_cnt` smallint(5) unsigned DEFAULT NULL,
@@ -176,10 +168,10 @@ CREATE TABLE `keywords` (
 -- Table structure for table `search_words`
 --
 
-DROP TABLE IF EXISTS `search_words`;
+/* DROP TABLE IF EXISTS `search_words` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `search_words` (
+CREATE TABLE IF NOT EXISTS `search_words` (
   `user_id` int(10) unsigned NOT NULL,
   `word` varchar(255) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -191,10 +183,10 @@ CREATE TABLE `search_words` (
 -- Table structure for table `tag_access_logs`
 --
 
-DROP TABLE IF EXISTS `tag_access_logs`;
+/* DROP TABLE IF EXISTS `tag_access_logs` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tag_access_logs` (
+CREATE TABLE IF NOT EXISTS `tag_access_logs` (
   `user_id` int(10) unsigned NOT NULL,
   `keyword_id` int(10) unsigned NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -207,10 +199,10 @@ CREATE TABLE `tag_access_logs` (
 -- Table structure for table `tweets`
 --
 
-DROP TABLE IF EXISTS `tweets`;
+/* DROP TABLE IF EXISTS `tweets` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tweets` (
+CREATE TABLE IF NOT EXISTS `tweets` (
   `twitter_bookmark_id` bigint(20) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`twitter_bookmark_id`,`user_id`),
@@ -222,10 +214,10 @@ CREATE TABLE `tweets` (
 -- Table structure for table `twitter_bookmarks`
 --
 
-DROP TABLE IF EXISTS `twitter_bookmarks`;
+/* DROP TABLE IF EXISTS `twitter_bookmarks` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `twitter_bookmarks` (
+CREATE TABLE IF NOT EXISTS `twitter_bookmarks` (
   `id` bigint(10) unsigned NOT NULL AUTO_INCREMENT,
   `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `sslp` tinyint(4) NOT NULL DEFAULT '0',
@@ -241,10 +233,10 @@ CREATE TABLE `twitter_bookmarks` (
 -- Table structure for table `twitter_links`
 --
 
-DROP TABLE IF EXISTS `twitter_links`;
+/* DROP TABLE IF EXISTS `twitter_links` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `twitter_links` (
+CREATE TABLE IF NOT EXISTS `twitter_links` (
   `twitter_bookmark_id` bigint(20) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -258,10 +250,10 @@ CREATE TABLE `twitter_links` (
 -- Table structure for table `twitter_search_logs`
 --
 
-DROP TABLE IF EXISTS `twitter_search_logs`;
+/* DROP TABLE IF EXISTS `twitter_search_logs` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `twitter_search_logs` (
+CREATE TABLE IF NOT EXISTS `twitter_search_logs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `since_id` varchar(255) NOT NULL DEFAULT '1',
   `tweets` smallint(6) NOT NULL DEFAULT '0',
@@ -276,10 +268,10 @@ CREATE TABLE `twitter_search_logs` (
 -- Table structure for table `update_queue`
 --
 
-DROP TABLE IF EXISTS `update_queue`;
+/* DROP TABLE IF EXISTS `update_queue` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `update_queue` (
+CREATE TABLE IF NOT EXISTS `update_queue` (
   `bookmark_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`bookmark_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
@@ -289,10 +281,10 @@ CREATE TABLE `update_queue` (
 -- Table structure for table `user_agents`
 --
 
-DROP TABLE IF EXISTS `user_agents`;
+/* DROP TABLE IF EXISTS `user_agents` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_agents` (
+CREATE TABLE IF NOT EXISTS `user_agents` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `user_agent` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -304,10 +296,10 @@ CREATE TABLE `user_agents` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
+/* DROP TABLE IF EXISTS `users` */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
