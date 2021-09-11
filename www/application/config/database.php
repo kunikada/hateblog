@@ -47,9 +47,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = $_ENV['MYSQL_HOST'];
+$db['default']['hostname'] = $_SERVER['MYSQL_HOST'];
 $db['default']['username'] = 'hateblog';
-$db['default']['password'] = file_get_contents($_ENV['MYSQL_PASSWORD_FILE']);
+$db['default']['password'] = file_get_contents($_SERVER['MYSQL_PASSWORD_FILE']);
 $db['default']['database'] = 'hateblog';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';

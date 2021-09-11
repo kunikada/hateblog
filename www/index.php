@@ -18,7 +18,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', $_ENV['APP_ENV']);
+	define('ENVIRONMENT', $_SERVER['APP_ENV']);
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
