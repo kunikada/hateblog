@@ -1,0 +1,2 @@
+/conf/[A-Z_]*
+/www/application/logs/
