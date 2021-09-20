@@ -5,8 +5,8 @@ $mail_admin = $_SERVER["MAIL_ADMIN"];
 try {
     // MYSQL CONNECT
     $mysqli = mysqli_init();
-    $mysqli->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
-    if (!$mysqli->real_connect("localhost", "hateblog", $_SERVER["DB_PASSWORD"], "hateblog")) {
+    //$mysqli->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
+    if (!$mysqli->real_connect($_SERVER["MYSQL_HOST"], "hateblog", $_SERVER["MYSQL_PASSWORD"], "hateblog")) {
         throw new Exception('Connect Error: ' . $mysqli->connect_error);
     }
 

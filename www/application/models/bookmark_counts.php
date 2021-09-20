@@ -88,7 +88,7 @@ EOQ;
         $sql = <<<EOQ
 SELECT
     YEAR(cdate) AS yyyy,
-    MONTH(cdate) AS mm,
+    ANY_VALUE(MONTH(cdate)) AS mm,
     WEEK(cdate) AS yweek,
     MIN(cdate) AS fdate,
     MAX(cdate) AS tdate

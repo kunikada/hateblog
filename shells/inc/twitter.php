@@ -5,8 +5,8 @@ class Twitter {
 
     private static function getOAuth() {
         if (!isset(self::$oauth)) {
-            self::$oauth = new OAuth('xMBwaFgweuY0bbzx70kHQ', $_SERVER['TWITTER_CONSUMER_SECRET']);
-            self::$oauth->setToken('149002345-foykXKjtv4Fo6xQWMl8wTCc07qygBoTv2HQSI4eg', $_SERVER['TWITTER_TOKEN_SECRET']);
+            self::$oauth = new OAuth('********', $_SERVER['TWITTER_CONSUMER_SECRET']);
+            self::$oauth->setToken('********', $_SERVER['TWITTER_TOKEN_SECRET']);
         }
         return self::$oauth;
     }

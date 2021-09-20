@@ -8,8 +8,8 @@ class DB {
 		if (!isset(self::$connect)) {
     		// MYSQL CONNECT
     		self::$connect = mysqli_init();
-    		self::$connect->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
-    		if (!self::$connect->real_connect("localhost", "hateblog", $_SERVER["DB_PASSWORD"], "hateblog")) {
+    		//self::$connect->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
+    		if (!self::$connect->real_connect($_SERVER["MYSQL_HOST"], "hateblog", $_SERVER["MYSQL_PASSWORD"], "hateblog")) {
     		    throw new Exception('Connect Error: ' . self::$connect->connect_error);
     		}
 		}

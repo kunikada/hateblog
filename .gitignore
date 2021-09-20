@@ -1,2 +1,2 @@
-/conf/[A-Z_]*
+*.env
 /www/application/logs/

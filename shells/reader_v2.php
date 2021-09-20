@@ -26,15 +26,13 @@ $current_date = date('Y-m-d', $current_timestamp);
  */
 try {
     // MYSQL CONNECT
-//  $mysqli = new mysqli("localhost", "bookmarks", "1sxezk39", "hateblog");
     $mysqli = mysqli_init();
-    if (file_exists('/etc/mysql/my.cnf')) {
-        $mysqli->options(MYSQLI_READ_DEFAULT_FILE, '/etc/mysql/my.cnf');
-    } elseif (file_exists('/etc/my.cnf')) {
-        $mysqli->options(MYSQLI_READ_DEFAULT_FILE, '/etc/my.cnf');
-    }
-    //if ($mysqli->connect_error) {
-    if (!$mysqli->real_connect("localhost", "hateblog", $_SERVER["DB_PASSWORD"], "hateblog")) {
+//    if (file_exists('/etc/mysql/my.cnf')) {
+//        $mysqli->options(MYSQLI_READ_DEFAULT_FILE, '/etc/mysql/my.cnf');
+//    } elseif (file_exists('/etc/my.cnf')) {
+//        $mysqli->options(MYSQLI_READ_DEFAULT_FILE, '/etc/my.cnf');
+//    }
+    if (!$mysqli->real_connect($_SERVER["MYSQL_HOST"], "hateblog", $_SERVER["MYSQL_PASSWORD"], "hateblog")) {
         throw new Exception('Connect Error: ' . $mysqli->connect_error);
     }
     $mysqli->set_charset('utf8mb4');

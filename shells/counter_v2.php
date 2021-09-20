@@ -2,11 +2,9 @@
 $loop = 2;
 $limit = $loop * 50;
 
-//$mysqli = new mysqli('localhost', 'bookmarks', '1sxezk39', 'hateblog');
 $mysqli = mysqli_init();
-$mysqli->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
-//if ($mysqli->connect_error) {
-if (!$mysqli->real_connect("localhost", "hateblog", $_SERVER["DB_PASSWORD"], "hateblog")) {
+//$mysqli->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
+if (!$mysqli->real_connect($_SERVER["MYSQL_HOST"], "hateblog", $_SERVER["MYSQL_PASSWORD"], "hateblog")) {
     die('connect error.');
 }
 
