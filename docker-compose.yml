@@ -21,8 +21,6 @@ services:
       - MYSQL_HOST=db
     volumes:
       - ./www:/var/www/html
-    ports:
-      - 9000:9000
     restart: always
   
   cron:
@@ -51,8 +49,6 @@ services:
       - MYSQL_DATABASE=hateblog
     volumes:
       - db_data:/var/lib/mysql
-    ports:
-      - 3306:3306
     restart: always
 
 #  myadmin:
