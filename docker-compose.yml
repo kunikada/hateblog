@@ -1,13 +1,23 @@
 version: "3.8"
 
 services:
+  https:
+    image: steveltn/https-portal
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    environment:
+      DOMAINS: 'hateblog.jp -> http://web:80'
+      STAGE: 'production' # Don't use production until staging works
+      # FORCE_RENEW: 'true'
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+
   web:
     build: ./nginx
     volumes:
       - ./www:/var/www/html
-    ports:
-      - 80:80
-      - 443:443
     restart: always
 
   php:
