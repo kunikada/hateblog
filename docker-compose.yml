@@ -14,7 +14,7 @@ services:
     build:
       context: ./php-fpm
       args:
-        - APP_ENV=development
+        - APP_ENV=production
     env_file:
       - hateblog.env
     environment:
