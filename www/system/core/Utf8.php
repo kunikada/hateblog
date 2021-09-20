@@ -84,10 +84,12 @@ class CI_Utf8 {
 	 */
 	function clean_string($str)
 	{
+/*
 		if ($this->_is_ascii($str) === FALSE)
 		{
 			$str = @iconv('UTF-8', 'UTF-8//IGNORE', $str);
 		}
+*/
 
 		return $str;
 	}
@@ -126,7 +128,7 @@ class CI_Utf8 {
 	{
 		if (function_exists('iconv'))
 		{
-			$str = @iconv($encoding, 'UTF-8', $str);
+//			$str = @iconv($encoding, 'UTF-8', $str);
 		}
 		elseif (function_exists('mb_convert_encoding'))
 		{

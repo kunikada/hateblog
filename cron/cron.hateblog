@@ -1,0 +1,10 @@
+6,18,30,42,54 * * * * /usr/local/bin/php /var/www/shells/reader_v2.php > /proc/1/fd/1 2>/proc/1/fd/2
+3,15,27,39,51 * * * * /usr/local/bin/php /var/www/shells/keyphrase.php > /proc/1/fd/1 2>/proc/1/fd/2
+0,12,24,36,48 * * * * /usr/local/bin/php /var/www/shells/counter_v2.php > /proc/1/fd/1 2>/proc/1/fd/2
+ 
+#50 23 * * * /usr/local/bin/php /var/www/shells/reportweet.php > /proc/1/fd/1 2>/proc/1/fd/2
+#10 0 * * * /usr/local/bin/php /var/www/shells/refollow.php > /proc/1/fd/1 2>/proc/1/fd/2
+
+0 4 * * * /usr/local/bin/php /var/www/shells/update_filter.php > /proc/1/fd/1 2>/proc/1/fd/2
+31 4 * * * /usr/local/bin/php /var/www/shells/update_counts.php > /proc/1/fd/1 2>/proc/1/fd/2
+

@@ -2,9 +2,9 @@
 try {
     // MYSQL CONNECT
     $mysqli = mysqli_init();
-    $mysqli->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
+    //$mysqli->options(MYSQLI_READ_DEFAULT_FILE, "/etc/mysql/my.cnf");
     #$mysqli->options(MYSQLI_READ_DEFAULT_GROUP, "client");
-    if (!$mysqli->real_connect("localhost", "hateblog", $_SERVER["DB_PASSWORD"], "hateblog")) {
+    if (!$mysqli->real_connect($_SERVER["MYSQL_HOST"], "hateblog", $_SERVER["MYSQL_PASSWORD"], "hateblog")) {
         throw new Exception('Connect Error: ' . $mysqli->connect_error);
     }
 
