@@ -11,6 +11,7 @@ RUN apk add --update --no-cache --virtual .build-dependencies $PHPIZE_DEPS \
   && pecl install apcu-4.0.11 \
   && docker-php-ext-enable apcu \
   && docker-php-ext-install mysqli \
+  && docker-php-ext-install opcache \
   && pecl clear-cache \
   && apk del .build-dependencies
 

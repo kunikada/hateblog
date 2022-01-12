@@ -73,5 +73,5 @@ services:
 #    restart: always
 
 volumes:
-  https-porta-data:
+  https-portal-data:
   db_data:
