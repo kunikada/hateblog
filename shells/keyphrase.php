@@ -120,20 +120,37 @@ function requestService($sentence) {
         return;
     }
     $appid = $_SERVER['YAHOO_APP_ID'];
-    $output = 'xml';
-    $request = 'http://jlp.yahooapis.jp/KeyphraseService/V1/extract';
-    $request .= "?appid=$appid&output=$output&sentence=";
+    $url = 'https://jlp.yahooapis.jp/KeyphraseService/V2/extract';
+    $request = array(
+	'id' => uniqid(),
+	'jsonrpc' => '2.0',
+	'method' => 'jlp.keyphraseservice.extract',
+	'params' => array(
+	    'q' => $sentence
+	)
+    );
+    $options = array(
+	'http' => array(
+	    'method' => 'POST',
+	    'header' => "Content-Type: application/json\r\nUser-Agent: Yahoo AppID: $appid\r\n",
+	    'content' => json_encode($request),
+	)
+    );
+    $context = stream_context_create($options);
+    $response = file_get_contents($url, false, $context);
     
-    $url = $request . urlencode($sentence);
-    $responsexml = simplexml_load_file($url);
-    if (!$responsexml || !$responsexml->Result) {
+    if (!$response) {
         return;
+    }
+    $responsejson = json_decode($response);
+    if (empty($responsejson->result)) {
+	return;
     }
 
     $data = array();
-    foreach ($responsexml->Result as $result) {
-        $keyword = (string)$result->Keyphrase;
-        $score = (int)$result->Score;
+    foreach ($responsejson->result->phrases as $p) {
+        $keyword = (string)$p->text;
+        $score = (int)$p->score;
         $data[$keyword] = $score;
     }
     return $data;
