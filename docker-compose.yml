@@ -51,6 +51,7 @@ services:
   
   db:
     build: ./mysql-mecab
+    container_name: hateblog_db
     command:
       - mysqld
       - --character-set-server=utf8mb4
