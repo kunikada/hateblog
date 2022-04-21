@@ -7,12 +7,16 @@ if ($domain) {
 }
 if ($data === false) {
     $ch = curl_init('https://www.google.com/s2/favicons?domain=' . $domain);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_FAILONERROR, true);
     $data = curl_exec($ch);
     curl_close($ch);
     
-    if (md5($data) == '3ca64f83fdcf25135d87e08af65e68c9') {
+    if ($data === false) {
+	$data = 0;
+    } elseif (md5($data) == '3ca64f83fdcf25135d87e08af65e68c9') {
         $data = 0;
     }
     apc_store($domain, $data);
