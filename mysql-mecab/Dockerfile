@@ -1,9 +1,9 @@
-FROM mysql/mysql-server
+FROM mysql/mysql-server:8.0
 
 RUN microdnf update \
   && microdnf remove mysql-community-server-minimal \
-  && microdnf install -y --disablerepo=ol8_appstream --enablerepo=mysql80-server-minimal mysql-community-server mysql-community-devel \
-  && microdnf install -y mecab mecab-ipadic \
+  && microdnf module disable mysql \
+  && microdnf install -y mysql-community-server mysql-community-devel mecab mecab-ipadic \
   && microdnf clean all \
   && rm -rf /var/cache/yum
 
